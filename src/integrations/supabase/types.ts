@@ -14,7 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      calculations: {
+        Row: {
+          break_even_units: number | null
+          created_at: string
+          email: string | null
+          fba_fee: number | null
+          id: string
+          net_profit: number | null
+          other_fees: number | null
+          ppc_budget: number | null
+          product_cost: number | null
+          profit_margin: number | null
+          referral_fee: number | null
+          selling_price: number | null
+          shipping_cost: number | null
+          timestamp: string
+        }
+        Insert: {
+          break_even_units?: number | null
+          created_at?: string
+          email?: string | null
+          fba_fee?: number | null
+          id?: string
+          net_profit?: number | null
+          other_fees?: number | null
+          ppc_budget?: number | null
+          product_cost?: number | null
+          profit_margin?: number | null
+          referral_fee?: number | null
+          selling_price?: number | null
+          shipping_cost?: number | null
+          timestamp?: string
+        }
+        Update: {
+          break_even_units?: number | null
+          created_at?: string
+          email?: string | null
+          fba_fee?: number | null
+          id?: string
+          net_profit?: number | null
+          other_fees?: number | null
+          ppc_budget?: number | null
+          product_cost?: number | null
+          profit_margin?: number | null
+          referral_fee?: number | null
+          selling_price?: number | null
+          shipping_cost?: number | null
+          timestamp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
