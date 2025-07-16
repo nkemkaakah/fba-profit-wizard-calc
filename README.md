@@ -290,15 +290,12 @@ npm test
 yarn test
 ```
 
-## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🔗 Links
 
 - **Live Demo**: https://fba-profit-wizard-calc.vercel.app/
-- **GitHub Repository**: https://github.com/your-username/fba-profit-wizard-calc
-- **Issue Tracker**: https://github.com/your-username/fba-profit-wizard-calc/issues
+
 
 ---
 
