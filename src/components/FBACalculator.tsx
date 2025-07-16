@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Calculator, Mail, Menu, X } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import IntroScreen from './IntroScreen';
 
 interface CalculationInputs {
   productCost: number;
@@ -24,6 +25,7 @@ interface CalculationResults {
 }
 
 const FBACalculator = () => {
+  const [showIntro, setShowIntro] = useState(true);
   const [inputs, setInputs] = useState<CalculationInputs>({
     productCost: 0,
     sellingPrice: 0,
@@ -151,17 +153,21 @@ const FBACalculator = () => {
     setMobileMenuOpen(false);
   };
 
+  if (showIntro) {
+    return <IntroScreen onComplete={() => setShowIntro(false)} />;
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b bg-card shadow-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Calculator className="h-8 w-8 text-primary" />
-              <h1 className="text-2xl font-bold text-foreground">FBA Profit Calculator</h1>
-            </div>
-            
+        <div className="container mx-auto px-4 py-6">
+          <div className="text-center mb-6">
+            <h1 className="text-4xl font-bold text-foreground mb-2">Calculate Your Amazon FBA Profits Instantly</h1>
+            <p className="text-muted-foreground">Professional profit analysis for your Amazon FBA business</p>
+          </div>
+          
+          <div className="flex items-center justify-center">
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-6">
               <button 
@@ -210,10 +216,10 @@ const FBACalculator = () => {
       </header>
 
       {/* Banner Ad Placeholder */}
-      <div className="w-full bg-muted border-b">
+      <div className="w-full bg-secondary border-b">
         <div className="container mx-auto px-4 py-8">
-          <div className="bg-accent/50 border-2 border-dashed border-muted-foreground/30 rounded-lg p-8 text-center">
-            <p className="text-muted-foreground text-lg">🎯 Ad goes here (728x90 banner)</p>
+          <div className="bg-accent/20 border-2 border-dashed border-accent/40 rounded-lg p-8 text-center">
+            <p className="text-secondary-foreground text-lg">🎯 Ad goes here (728x90 banner)</p>
           </div>
         </div>
       </div>
@@ -332,7 +338,7 @@ const FBACalculator = () => {
                 <Button 
                   onClick={calculateProfit}
                   disabled={isCalculating}
-                  className="w-full text-base py-6"
+                  className="w-full text-base py-6 bg-primary hover:bg-primary/90 text-primary-foreground"
                   size="lg"
                 >
                   {isCalculating ? (
@@ -351,18 +357,18 @@ const FBACalculator = () => {
             </Card>
 
             {/* Rectangle Ad Placeholder */}
-            <div className="lg:hidden bg-muted rounded-lg">
-              <div className="bg-accent/50 border-2 border-dashed border-muted-foreground/30 rounded-lg p-8 text-center">
-                <p className="text-muted-foreground">📱 Ad goes here (300x250)</p>
+            <div className="lg:hidden bg-secondary rounded-lg">
+              <div className="bg-accent/20 border-2 border-dashed border-accent/40 rounded-lg p-8 text-center">
+                <p className="text-secondary-foreground">📱 Ad goes here (300x250)</p>
               </div>
             </div>
 
             {/* Results Card */}
             <div className="space-y-6">
               {/* Desktop Ad */}
-              <div className="hidden lg:block bg-muted rounded-lg">
-                <div className="bg-accent/50 border-2 border-dashed border-muted-foreground/30 rounded-lg p-8 text-center">
-                  <p className="text-muted-foreground">💻 Ad goes here (300x250)</p>
+              <div className="hidden lg:block bg-secondary rounded-lg">
+                <div className="bg-accent/20 border-2 border-dashed border-accent/40 rounded-lg p-8 text-center">
+                  <p className="text-secondary-foreground">💻 Ad goes here (300x250)</p>
                 </div>
               </div>
 
@@ -460,7 +466,7 @@ const FBACalculator = () => {
                   <Button 
                     onClick={sendResultsToEmail}
                     disabled={!email || isSendingEmail}
-                    className="w-full"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                     size="lg"
                   >
                     {isSendingEmail ? (
